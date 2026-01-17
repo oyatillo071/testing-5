@@ -1,255 +1,285 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="uz">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- font -->
-    <link rel="stylesheet" href="./styles/font.css">
-    <!-- normalize -->
-    <link rel="stylesheet" href="./styles/normalize.css">
-    <!-- style -->
-    <link rel="stylesheet" href="./styles/style.css">
-    <!-- favicon -->
-    <link rel="shortcut icon" href="./images/shield.png" type="image/x-icon">
-    <!-- sayt name  -->
-    <title>E-comerse</title>
-
+    <title>Davlat va Huquq Nazariyasi Quiz</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f3f4f6;
+        }
+        .option-card:hover {
+            transform: translateY(-2px);
+            transition: all 0.2s ease;
+        }
+    </style>
 </head>
+<body class="min-h-screen flex items-center justify-center p-4">
 
-<body>
-    <header class="heider ">
-        <div class="container header_container">
-            <div class="logo">
-                <a href="#">LOGO</a>
-            </div>
-            <nav class="nav">
-                <ul class="nav-list">
-                    <li class="nav-item active"><a href="#">Home</a></li>
-                    <li class="nav-item"><a href="#">About</a></li>
-                    <li class="nav-item"><a href="#">Contack us</a></li>
-                </ul>
-
-            </nav>
-
+    <div id="quiz-container" class="max-w-2xl w-full bg-white rounded-2xl shadow-xl overflow-hidden">
+        <!-- Progress Bar -->
+        <div class="h-2 bg-gray-100">
+            <div id="progress" class="h-full bg-blue-600 transition-all duration-500" style="width: 0%"></div>
         </div>
 
-    </header>
-
-    <main class="main">
-        <div class=" container main_container">
-            <div class="main-left">
-                <h1 class="main-title">New<span> E-commerce App</span> best for You</h1>
-
-                <p class="description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Amet sed vulputate vitae
-                    velit dictum cursus amet. Turpis donec ut velit quis. Cursus commodo, eget urna, sapien amet. </p>
-
-                <div class="links">
-                    <a href=""> <img src="./images/play-market.png" width="180px" alt="play market"></a>
-                    <a href=""> <img src="./images/app-store.png" width="180px" alt="aps store"></a>
-                </div>
-
+        <div class="p-6 md:p-8">
+            <!-- Header -->
+            <div class="flex justify-between items-center mb-6">
+                <h1 class="text-xl font-bold text-gray-800">Davlat va huquq nazariyasi</h1>
+                <span id="question-counter" class="text-sm font-semibold text-blue-600 bg-blue-50 px-3 py-1 rounded-full">1/20</span>
             </div>
 
-            <div class="main-right">
-                <img src="./images/phones.png" width="441px" alt="phones">
-            </div>
-        </div>
-
-    </main>
-
-    <div class="horizontal-line container"></div>
-
-
-    <section class="second_page">
-        <div class="container second__container">
-            <div class="top">
-                <h2 class="top_text">What we do to help our customers in digital era.</h2>
-
-            </div>
-
-            <div class="bottom bottom__container">
-                <div class="people">
-                    <img class="photo" src="./images/man.png" alt="photo man">
-                    <h3 class="receive">Receive</h3>
-
-                    <p class="people_info">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-                        tempor
-                        incididunt ut labore et dolore magna aliqua.
-                    </p>
-                    <div class="more">
-
-                        <p class="learn_more">Learn more</p>
-                        <a class="arrow" href="#"> <img src="./images/arrow.png" alt="arrow"></a>
-                    </div>
-
-                </div>
-
-
-                <div class="people">
-                    <img class="photo" src="./images/girl-phone.png" alt="photo girl with phone">
-                    <h3 class="receive">Send</h3>
-
-                    <p class="people_info">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-                        tempor
-                        incididunt ut labore et dolore magna aliqua.
-                    </p>
-                    <div class="more">
-
-                        <p class="learn_more">Learn more</p>
-                        <a class="arrow" href="#"> <img src="./images/arrow.png" alt="arrow"></a>
-                    </div>
-                </div>
-
-
-                <div class="people">
-                    <img class="photo" src="./images/girl-comp.png" alt="photo girl with comp">
-                    <h3 class="receive">Buy</h3>
-
-                    <p class="people_info">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-                        tempor
-                        incididunt ut labore et dolore magna aliqua.
-                    </p>
-                    <div class="more">
-
-                        <p class="learn_more">Learn more</p>
-                        <a class="arrow" href="#"> <img src="./images/arrow.png" alt="arrow"></a>
-                    </div>
-                </div>
-
-            </div>
-
-        </div>
-
-
-
-
-        <div class="bottom bottom__container">
-            <div class="people">
-                <img class="photo" src="./images/man.png" alt="photo man">
-                <h3 class="receive">Receive</h3>
-
-                <p class="people_info">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                    incididunt ut labore et dolore magna aliqua.
-                </p>
-                <div class="more">
-
-                    <p class="learn_more">Learn more</p>
-                    <a class="arrow" href="#"> <img src="./images/arrow.png" alt="arrow"></a>
-                </div>
-
-            </div>
-
-
-            <div class="people">
-                <img class="photo" src="./images/girl-phone.png" alt="photo girl with phone">
-                <h3 class="receive">Send</h3>
-
-                <p class="people_info">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                    incididunt ut labore et dolore magna aliqua.
-                </p>
-                <div class="more">
-
-                    <p class="learn_more">Learn more</p>
-                    <a class="arrow" href="#"> <img src="./images/arrow.png" alt="arrow"></a>
+            <!-- Question Area -->
+            <div id="question-content">
+                <p id="question-text" class="text-lg text-gray-700 font-medium mb-8 leading-relaxed"></p>
+                <div id="options-container" class="space-y-3">
+                    <!-- Options will be injected here -->
                 </div>
             </div>
 
-
-            <div class="people">
-                <img class="photo" src="./images/girl-comp.png" alt="photo girl with comp">
-                <h3 class="receive">Buy</h3>
-
-                <p class="people_info">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                    incididunt ut labore et dolore magna aliqua.
-                </p>
-                <div class="more">
-
-                    <p class="learn_more">Learn more</p>
-                    <a class="arrow" href="#"> <img src="./images/arrow.png" alt="arrow"></a>
+            <!-- Result Area (Hidden initially) -->
+            <div id="result-content" class="hidden text-center py-10">
+                <div id="result-icon" class="mb-6 flex justify-center">
+                    <svg class="w-20 h-20 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
                 </div>
-            </div>
-
-        </div>
-
-    </section>
-
-
-
-    <section class="container third_page">
-        <div class="horizontal-line container"></div>
-
-        <div class="container how_it_work">
-            <h2>How it works</h2>
-        </div>
-
-        <div class="container">
-
-            <div class="work">
-
-                <div class="create">
-                    <a href="#" alt="create account"><img src="./images/person.png"></a>
-
-                    <h3 class="account">Create an account</h3>
-                    <p class="third_text">Lorem ipsum dolor sit amet, consecteteu.</p>
-                </div>
-
-
-
-                <div class="create">
-                    <a href="#"><img src="./images/shield.png" alt="shield"></a>
-
-                    <h3 class="account">Get autentification</h3>
-                    <p class="third_text">Lorem ipsum dolor sit amet, consecteteu.</p>
-
-                </div>
-
-
-                <div class="create">
-                    <a href="#"><img src="./images/emoji.png" alt="emoji"></a>
-
-                    <h3 class="account">Enjoy the app</h3>
-                    <p class="third_text">Lorem ipsum dolor sit amet, consecteteu.</p>
-
-                </div>
-
+                <h2 class="text-3xl font-bold text-gray-800 mb-2">Test Yakunlandi!</h2>
+                <p id="score-text" class="text-xl text-gray-600 mb-8"></p>
+                <button onclick="location.reload()" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-xl transition-colors">Qayta topshirish</button>
             </div>
         </div>
+    </div>
 
-        </div>
+    <script>
+        const quizData = [
+            {
+                q: "1. \"Fan\" tushunchasiga berilgan eng to'g'ri ta'rifni ko'rsating:",
+                options: [
+                    "Faqat texnik qurilmalarni yaratishga qaratilgan amaliy bilimlar majmuasi.",
+                    "Insonning atrof-muhitni anglashga qaratilgan bilish faoliyati bo'lib, obyektiv haqiqatni topish, tushuntirish va tizimlashtirish maqsadiga ega.",
+                    "Davlat organlari tomonidan qabul qilingan qonunlar to'plami.",
+                    "Jamiyatdagi ijtimoiy munosabatlarni tartibga soluvchi axloq normalari."
+                ],
+                correct: 1
+            },
+            {
+                q: "2. Quyidagi fanlardan qaysilari \"aniq fanlar\" guruhiga kiradi?",
+                options: ["Tarix va huquqshunoslik.", "Biologiya va geografiya.", "Matematika va kibernetika.", "Siyosatshunoslik va sotsiologiya."],
+                correct: 2
+            },
+            {
+                q: "3. Nazariy-huquqiy fanlarning asosiy o'rganish obyekti nima?",
+                options: [
+                    "Jinoyat turlari va ularga beriladigan jazo choralarini belgilash.",
+                    "Huquq va davlatning mohiyati, kelib chiqishi va umumiy rivojlanish qonuniyatlari.",
+                    "Sud jarayonida ashyoviy dalillarni to'plash usullari.",
+                    "Xalqaro shartnomalarni imzolash tartib-qoidalari."
+                ],
+                correct: 1
+            },
+            {
+                q: "4. Amaliy huquqiy fanlar qatoriga kiruvchi fanni toping:",
+                options: ["Davlat va huquq nazariyasi.", "Falsafa.", "Kriminalistika.", "Siyosiy ta'limotlar tarixi."],
+                correct: 2
+            },
+            {
+                q: "5. Davlat va huquq nazariyasining predmetini nima tashkil etadi?",
+                options: [
+                    "Faqat qadimiy davlatlarning shakllanish tarixi.",
+                    "Davlat va huquqning ijtimoiy mohiyati, rivojlanish qonuniyatlari va funksiyalari.",
+                    "Ma'muriy huquqbuzarliklar uchun javobgarlik tizimi.",
+                    "Korxonalarning iqtisodiy samaradorligini tahlil qilish."
+                ],
+                correct: 1
+            },
+            {
+                q: "6. Metodologiya tushunchasiga quyidagilardan qaysi biri mos keladi?",
+                options: [
+                    "Faqat fanning o'rganish obyekti bo'lgan qonunlar majmui.",
+                    "Fanning mazmuni, yo'nalishi va tadqiqot xarakterini belgilaydigan prinsiplar, metodlar va ilmiy qadriyatlar tizimi.",
+                    "Davlatning boshqaruv shaklini o'zgartirish usullari.",
+                    "Huquqiy normalarni buzganlik uchun qo'llaniladigan sanksiyalar."
+                ],
+                correct: 1
+            },
+            {
+                q: "7. Dialektik metod yordamida davlat va huquq qanday tahlil qilinadi?",
+                options: [
+                    "Faqat o'zgarmas va qat'iy qoliplar asosida.",
+                    "Qarama-qarshiliklar, inqirozlar va doimiy rivojlanish jarayonida.",
+                    "Faqat raqamlar va statistik ma'lumotlar yordamida.",
+                    "Faqat chet el tajribasini ko'r-ko'rona ko'chirish orqali."
+                ],
+                correct: 1
+            },
+            {
+                q: "8. Davlat va huquqni adolat, erkinlik va tenglik kabi qadriyatlar tizimi sifatida tahlil qiluvchi metod qanday nomlanadi?",
+                options: ["Formal-yuridik metod.", "Sotsiologik metod.", "Aksiologik metod.", "Qiyosiy-huquqiy metod."],
+                correct: 2
+            },
+            {
+                q: "9. Analiz va sintez metodlari qaysi guruhga mansub?",
+                options: ["Maxsus metodlar.", "Xususiy metodlar.", "Umumiy metodlar.", "Texnik metodlar."],
+                correct: 2
+            },
+            {
+                q: "10. Sotsiologik metod qanday vositalar orqali tadqiqot olib boradi?",
+                options: [
+                    "Faqat qonun matnini grammatik tahlil qilish orqali.",
+                    "So'rovnoma, intervyu, kuzatish va eksperiment o'tkazish orqali.",
+                    "Matematik formulalarni qo'llash orqali.",
+                    "Turli davlatlar konstitutsiyalarini solishtirish orqali."
+                ],
+                correct: 1
+            },
+            {
+                q: "11. Huquqiy normalarni mantiqiy, grammatik va strukturaviy tahlil qilish qaysi metodning vazifasi?",
+                options: ["Qiyosiy-huquqiy metod.", "Formal-yuridik metod.", "Prognostik metod.", "Evristik metod."],
+                correct: 1
+            },
+            {
+                q: "12. Turli davlatlarning huquqiy tizimlarini bir-biriga solishtirib o'rganish qanday nomlanadi?",
+                options: ["Formal-yuridik metod.", "Sotsiologik tahlil.", "Qiyosiy-huquqiy metod.", "Induksiya metodi."],
+                correct: 2
+            },
+            {
+                q: "13. Davlat va huquq nazariyasi qaysi fanlar bilan uzviy bog'liq?",
+                options: [
+                    "Faqat fizika va kimyo fanlari bilan.",
+                    "Falsafa, siyosatshunoslik, iqtisodiyot va sotsiologiya kabi gumanitar fanlar bilan.",
+                    "Faqat botanika va zoologiya fanlari bilan.",
+                    "Hech qanday fan bilan bog'liq bo'lmagan mustaqil fan."
+                ],
+                correct: 1
+            },
+            {
+                q: "14. Davlat va huquq nazariyasining yuridik fanlar tizimidagi roli qanday tavsiflanadi?",
+                options: [
+                    "Faqat yordamchi, ikkinchi darajali fan.",
+                    "Kirish, umumlashtiruvchi, metodologik, fundamental va atamashunoslik bazasini yaratuvchi fan.",
+                    "Faqat tergov harakatlarini o'rgatuvchi amaliy fan.",
+                    "Faqat qonunlarni tartibga soluvchi texnik vosita."
+                ],
+                correct: 1
+            },
+            {
+                q: "15. Davlat va huquqning mohiyati, kelib chiqishi va borlig'i haqidagi savollarni o'rganuvchi funksiya bu:",
+                options: ["Ontologik funksiya.", "Prognostik funksiya.", "Evristik funksiya.", "Metodologik funksiya."],
+                correct: 0
+            },
+            {
+                q: "16. Davlat va huquqning kelajagiga oid ilmiy taxminlar (prognozlar) ilgari surish qaysi funksiyaga kiradi?",
+                options: ["Ontologik.", "Prognostik.", "Evristik.", "Metodologik."],
+                correct: 1
+            },
+            {
+                q: "17. Fanda yangi qonuniyatlarni ochish va ilmiy kashfiyotlar qilish qaysi funksiya orqali amalga oshadi?",
+                options: ["Gnoseologik funksiya.", "Evristik funksiya.", "Siyosiy funksiya.", "Tarbiyaviy funksiya."],
+                correct: 1
+            },
+            {
+                q: "18. Barcha yuridik fanlar uchun yagona metodlar, tushunchalar va prinsiplarni ishlab chiqish bu:",
+                options: ["Metodologik funksiya.", "Ideologik funksiya.", "Amaliy funksiya.", "Deskriptiv funksiya."],
+                correct: 0
+            },
+            {
+                q: "19. Xususiy (yakka) holatlardan umumiy nazariy xulosaga kelish metodi qanday ataladi?",
+                options: ["Deduksiya.", "Induksiya.", "Abstraksiya.", "Modellashtirish."],
+                correct: 1
+            },
+            {
+                q: "20. Davlat va huquqning o'zaro bog'liqligini qanday tushunish mumkin?",
+                options: [
+                    "Ular bir-biriga bog'liq bo'lmagan alohida hodisalardir.",
+                    "Davlat organlari huquqiy normalar asosida ish yuritadi, huquq esa ularning vakolatlarini belgilaydi.",
+                    "Faqat davlat huquqdan ustun turadi, huquq davlatni cheklay olmaydi.",
+                    "Faqat huquq mavjud bo'lgan joyda davlat bo'lishi shart emas."
+                ],
+                correct: 1
+            }
+        ];
 
-    </section>
+        let currentQuestion = 0;
+        let score = 0;
+        let canAnswer = true;
 
-    <div class="horizontal-line container"></div>
+        const questionText = document.getElementById('question-text');
+        const optionsContainer = document.getElementById('options-container');
+        const counter = document.getElementById('question-counter');
+        const progressBar = document.getElementById('progress');
+        const questionArea = document.getElementById('question-content');
+        const resultArea = document.getElementById('result-content');
+        const scoreText = document.getElementById('score-text');
 
-
-    <h2 class="client_say">What our client say</h2>
-    <section class="four_section container">
-
-        
-
-        <div class="clien_comment">
-
+        function loadQuestion() {
+            canAnswer = true;
+            const data = quizData[currentQuestion];
             
-            <img class="client" src="./images/client.png" alt="person photo ">
-           
+            // Set question counter and progress
+            counter.innerText = `${currentQuestion + 1}/${quizData.length}`;
+            progressBar.style.width = `${((currentQuestion) / quizData.length) * 100}%`;
 
-                <p class="comment">Amet in elementum nulla scelerisque dui, egestas at. Elit 
-                    consectetur turpis elementum amet vitae et etiam nec. Varius volutpat hac
-                    adipiscing tincidunt pretium. <br> <br>
-                    <strong class="paulina">Angel Paulina</strong>
-                 </p>
-                    
-                    
-               
-           
-        </div>
+            // Set question text
+            questionText.innerText = data.q;
 
-    </section>
+            // Clear and inject options
+            optionsContainer.innerHTML = '';
+            data.options.forEach((opt, index) => {
+                const button = document.createElement('button');
+                button.className = "option-card w-full text-left p-4 rounded-xl border-2 border-gray-100 hover:border-blue-500 hover:bg-blue-50 transition-all flex items-center group";
+                button.innerHTML = `
+                    <span class="w-8 h-8 rounded-full bg-gray-100 group-hover:bg-blue-200 text-gray-600 group-hover:text-blue-700 flex items-center justify-center font-bold mr-4 shrink-0">${String.fromCharCode(65 + index)}</span>
+                    <span class="text-gray-700 font-medium">${opt}</span>
+                `;
+                button.onclick = () => selectOption(index, button);
+                optionsContainer.appendChild(button);
+            });
+        }
 
+        function selectOption(index, element) {
+            if (!canAnswer) return;
+            canAnswer = false;
 
+            const correctIndex = quizData[currentQuestion].correct;
+            const options = optionsContainer.children;
 
+            if (index === correctIndex) {
+                score++;
+                element.classList.remove('border-gray-100', 'hover:border-blue-500');
+                element.classList.add('border-green-500', 'bg-green-50');
+                element.querySelector('span').classList.add('bg-green-500', 'text-white');
+            } else {
+                element.classList.remove('border-gray-100', 'hover:border-blue-500');
+                element.classList.add('border-red-500', 'bg-red-50');
+                element.querySelector('span').classList.add('bg-red-500', 'text-white');
 
+                // Show correct one
+                options[correctIndex].classList.add('border-green-500', 'bg-green-50');
+            }
+
+            setTimeout(() => {
+                currentQuestion++;
+                if (currentQuestion < quizData.length) {
+                    loadQuestion();
+                } else {
+                    showResult();
+                }
+            }, 1000);
+        }
+
+        function showResult() {
+            progressBar.style.width = "100%";
+            questionArea.classList.add('hidden');
+            resultArea.classList.remove('hidden');
+            const percent = Math.round((score / quizData.length) * 100);
+            scoreText.innerHTML = `Siz ${quizData.length} tadan <b>${score}</b> ta to'g'ri topdingiz.<br><span class="text-2xl font-bold ${percent >= 60 ? 'text-green-600' : 'text-red-600'}">${percent}% Natija</span>`;
+        }
+
+        // Initialize quiz
+        window.onload = loadQuestion;
+
+    </script>
 </body>
-
 </html>
