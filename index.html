@@ -286,59 +286,434 @@
             },
             "topic2": {
                 title: "2-Mavzu: Davlatning vujudga kelishi: yo'llari va nazariyalari",
-                questions: [
-                    {
-                        q: "Davlatning shakllanishiga ta'sir etuvchi universal omillarga qaysi biri KIRMAYDI?",
-                        options: ["Iqtisodiy o'zgarishlar", "Ijtimoiy tabaqalanish", "Boshqaruvning murakkablashishi", "Faqat harbiy tahdidlar va bosqinchilik"],
-                        correct: 3
-                    },
-                    {
-                        q: "Sharqona (Osiyocha) yo'lning asosiy belgisi nima?",
-                        options: ["Xususiy mulkning ustuvorligi", "Yirik sug'orish ishlarini tashkil etish zaruriyati", "Sanoat inqilobi", "Demokratik saylovlar"],
-                        correct: 1
-                    },
-                    {
-                        q: "Patriarxal nazariyaning asoschisi kim?",
-                        options: ["Karl Marks", "Foma Akvinskiy", "Aristotel", "Jan Jak Russo"],
-                        correct: 2
-                    },
-                    {
-                        q: "Teologik nazariyaga ko'ra davlat qanday paydo bo'lgan?",
-                        options: ["Ijtimoiy shartnoma orqali", "Xudo tomonidan o'rnatilgan", "Urushlar natijasida", "Tirik organizm o'sishi kabi"],
-                        correct: 1
-                    },
-                    {
-                        q: "Ijtimoiy shartnoma nazariyasining vakillari kimlar?",
-                        options: ["Gumplovich va Kautskiy", "Getsiy, Gobbs, Lokk, Russo", "Marks va Engels", "Vittfogel va Petrazhitskiy"],
-                        correct: 1
-                    },
-                    {
-                        q: "Marksistik nazariyaga ko'ra, davlat nima?",
-                        options: ["Xudo irodasi", "Bir sinfning boshqa sinf ustidan hukmronligini saqlash mashinasi", "Hukmdorning xususiy mulki", "Tirik organizm"],
-                        correct: 1
-                    },
-                    {
-                        q: "Irrigatsiya (gidravlik) nazariyasining asoschisi kim?",
-                        options: ["Karl Kautskiy", "Zigmund Freyd", "Karl Vittfogel", "Aristotel"],
-                        correct: 2
-                    },
-                    {
-                        q: "Organik nazariyaga ko'ra, davlat nimaga o'xshaydi?",
-                        options: ["Mexanik qurilmaga", "Tirik organizmga", "Diniy jamoaga", "Iqtisodiy korxonaga"],
-                        correct: 1
-                    },
-                    {
-                        q: "Psixologik nazariyaning vakillari kimlar?",
-                        options: ["Lev Petrazhitskiy, Gabriel Tard, Zigmund Freyd", "Karl Marks va Vladimir Lenin", "Tomas Gobbs va Jon Lokk", "Foma Akvinskiy"],
-                        correct: 0
-                    },
-                    {
-                        q: "Qaysi nazariya insoniyatga qarshi deb tan olingan?",
-                        options: ["Patrimonial nazariya", "Psixologik nazariya", "Irqiy nazariya", "Zo'ravonlik nazariyasi"],
-                        correct: 2
-                    }
-                ]
+                questions:[
+  {
+    q: "Davlatning shakllanishiga ta'sir etuvchi universal omillarga qaysi biri KIRMAYDI?",
+    options: [
+      "Iqtisodiy omillar.",
+      "Ijtimoiy omillar.",
+      "Madaniy omillar.",
+      "Faqat harbiy tahdidlar va bosqinchilik."
+    ],
+    correct: 3
+  },
+  {
+    q: "Sharqona (Osiyocha) yo‘l qaysi mintaqalarda tarqalgan?",
+    options: [
+      "Yevropa va Shimoliy Amerika.",
+      "Qadimgi Sharq, Afrika, Amerikaning ayrim hududlari.",
+      "Avstraliya va Yangi Zelandiya.",
+      "Faqat Skandinaviya mamlakatlari."
+    ],
+    correct: 1
+  },
+  {
+    q: "Sharqona yo‘lning asosiy belgisi nima?",
+    options: [
+      "Xususiy mulkning rivojlanishi.",
+      "Faqat harbiy kuchga tayanish.",
+      "Yirik sug'orish ishlarini tashkil etish zaruriyati.",
+      "Faqat savdo-sotiqning rivojlanishi."
+    ],
+    correct: 2
+  },
+  {
+    q: "\"Hokimiyat-mulk\" hodisasi nimani anglatadi?",
+    options: [
+      "Faqat davlat organlarining shakllanishi.",
+      "Urug'-qabila zodagonlari qo'lida jamoat boyliklarining to'planishi va lavozimlarning meros bo'lishi.",
+      "Faqat sud tizimining rivojlanishi.",
+      "Faqat iqtisodiy jarayonlarni o'rganish."
+    ],
+    correct: 1
+  },
+  {
+    q: "G‘arbcha yo‘lning hal qiluvchi omili nima?",
+    options: [
+      "Faqat sug'orish tizimi.",
+      "Faqat diniy omillar.",
+      "Xususiy mulk va sinfliy tabaqalanish.",
+      "Faqat harbiy kuch."
+    ],
+    correct: 2
+  },
+  {
+    q: "Qadimgi Afinada davlatchilik qanday shakllangan?",
+    options: [
+      "Faqat sug'orish tizimi orqali.",
+      "Urugchilik ichida sinfliy antagonizm orqali, dastlabki demokratiya.",
+      "Faqat diniy hokimiyat orqali.",
+      "Faqat harbiy kuch orqali."
+    ],
+    correct: 1
+  },
+  {
+    q: "Teologik nazariyaning asosiy g‘oyasi nima?",
+    options: [
+      "Davlat faqat iqtisodiy jarayonlar natijasi.",
+      "Davlat va qonunlar Xudo tomonidan o‘rnatilgan.",
+      "Davlat faqat harbiy kuch natijasi.",
+      "Davlat faqat sug'orish tizimi natijasi."
+    ],
+    correct: 1
+  },
+  {
+    q: "Teologik nazariyaning vakillariga kimlar kiradi?",
+    options: [
+      "Karl Marks, Fridrix Engels.",
+      "Foma Akvinskiy, Avgustin Avreliy, Al-Movardiy.",
+      "Lev Petrazhitskiy, Zigmund Freyd.",
+      "Lyudvig Gumplovich, Karl Kautskiy."
+    ],
+    correct: 1
+  },
+  {
+    q: "Patriarxal nazariyaning asoschisi kim?",
+    options: [
+      "Karl Marks.",
+      "Foma Akvinskiy.",
+      "Aristotel.",
+      "Lev Petrazhitskiy."
+    ],
+    correct: 2
+  },
+  {
+    q: "Ijtimoiy shartnoma nazariyasiga ko‘ra, davlat qanday paydo bo‘lgan?",
+    options: [
+      "Faqat sug'orish tizimi orqali.",
+      "Odamlar o‘z huquqlarining bir qismini davlatga topshirishi orqali.",
+      "Faqat diniy hokimiyat orqali.",
+      "Faqat harbiy kuch orqali."
+    ],
+    correct: 1
+  },
+  {
+    q: "Ijtimoiy shartnoma nazariyasining vakillari qatoriga kimlar kiradi?",
+    options: [
+      "Karl Marks, Engels, Lenin.",
+      "Aristotel, Platon.",
+      "Foma Akvinskiy, Avgustin.",
+      "Getsiy, Gobbs, Lokk, Russo."
+    ],
+    correct: 3
+  },
+  {
+    q: "Tomas Gobbsning \"tabiiy holat\" kontseptsiyasi qanday tasvirlangan?",
+    options: [
+      "Faqat tinchlik va barqarorlik.",
+      "\"Hammaning hammaga qarshi urushi\" - xavfsizlik yo‘q.",
+      "Faqat diniy hokimiyat.",
+      "Faqat sug'orish tizimi."
+    ],
+    correct: 1
+  },
+  {
+    q: "Zo‘ravonlik nazariyasining vakillariga kimlar kiradi?",
+    options: [
+      "Lyudvig Gumplovich, Karl Kautskiy, Evgeniy Dyuring.",
+      "Karl Marks, Engels.",
+      "Lev Petrazhitskiy, Zigmund Freyd.",
+      "Foma Akvinskiy, Avgustin."
+    ],
+    correct: 0
+  },
+  {
+    q: "Marksistik nazariyaga ko‘ra, davlat nima?",
+    options: [
+      "Faqat sug'orish tizimi.",
+      "Faqat diniy hokimiyat.",
+      "Bir sinfning boshqa sinf ustidan hukmronligini saqlab turish uchun mashina.",
+      "Faqat harbiy kuch."
+    ],
+    correct: 2
+  },
+  {
+    q: "Marksistik nazariyaning asoschilaridan kimlar?",
+    options: [
+      "Aristotel, Platon.",
+      "Karl Marks, Fridrix Engels, Vladimir Lenin.",
+      "Foma Akvinskiy, Avgustin.",
+      "Lev Petrazhitskiy, Zigmund Freyd."
+    ],
+    correct: 1
+  },
+  {
+    q: "Irrigatsiya (gidravlik) nazariyasining asoschisi kim?",
+    options: [
+      "Karl Marks.",
+      "Aristotel.",
+      "Karl Vittfogel.",
+      "Lev Petrazhitskiy."
+    ],
+    correct: 2
+  },
+  {
+    q: "Organik nazariyaga ko‘ra, davlat nimaga o‘xshaydi?",
+    options: [
+      "Faqat sug'orish tizimiga.",
+      "Tirik organizmga.",
+      "Faqat diniy hokimiyatga.",
+      "Faqat harbiy kuchga."
+    ],
+    correct: 1
+  },
+  {
+    q: "Psixologik nazariyaning vakillari kimlar?",
+    options: [
+      "Karl Marks, Engels.",
+      "Lev Petrazhitskiy, Gabriel Tard, Zigmund Freyd.",
+      "Foma Akvinskiy, Avgustin.",
+      "Lyudvig Gumplovich, Karl Kautskiy."
+    ],
+    correct: 1
+  },
+  {
+    q: "Patrimonial nazariyaga ko‘ra, davlat nima?",
+    options: [
+      "Faqat sug'orish tizimi.",
+      "Hukmdorning xususiy mulki.",
+      "Faqat diniy hokimiyat.",
+      "Faqat harbiy kuch."
+    ],
+    correct: 1
+  },
+  {
+    q: "Qaysi nazariya butulay obro'sizlangan va insoniyatga qarshi deb tan olingan?",
+    options: [
+      "Marksistik nazariya.",
+      "Teologik nazariya.",
+      "Irqiy nazariya.",
+      "Patriarxal nazariya."
+    ],
+    correct: 2
+  }
+]
+
+            },
+             "topic3": {
+                title: "3-Mavzu: DAVLAT VA HUQUQ TUSHUNCHASI BO'YICHA TEST SAVOLLARI",
+                questions:
+                    
+[
+  {
+    q: "Davlatning umumiy ta'rifini to'g'ri ko'rsating:",
+    options: [
+      "Faqat iqtisodiy jarayonlarni boshqaruvchi institut.",
+      "Jamiyatning eng yuqori darajada tashkil topgan va universal boshqaruvchi instituti.",
+      "Faqat harbiy kuchga asoslangan tuzilma.",
+      "Faqat diniy hokimiyat shakli."
+    ],
+    correct: 1
+  },
+  {
+    q: "Qaysi qadimgi mutafakkir davlatni 'adolatni ta'minlovchi ideal tuzum' deb atagan?",
+    options: [
+      "Aristotel.",
+      "Sokrat.",
+      "Platon.",
+      "Tomas Gobbs."
+    ],
+    correct: 2
+  },
+  {
+    q: "Tomas Gobbsning davlat haqidagi qarashi qanday bo'lgan?",
+    options: [
+      "Davlat - tabiiy jarayon natijasi.",
+      "Davlat - 'Leviafan' - barcha fuqarolarning xavfsizligi uchun tuzilgan sun'iy maxluq.",
+      "Davlat - diniy hokimiyatning natijasi.",
+      "Davlat - faqat iqtisodiy jarayonlar mahsuli."
+    ],
+    correct: 1
+  },
+  {
+    q: "Karl Marksga ko'ra, davlat nima?",
+    options: [
+      "Faqat diniy hokimiyat.",
+      "Sinfliy zo'ravonlik vositasi, hukmon sinf manfaatlarini himoya qiluvchi.",
+      "Faqat sug'orish tizimi.",
+      "Faqat harbiy kuch."
+    ],
+    correct: 1
+  },
+  {
+    q: "Davlatning hududiylik belgisi qaysi qismlardan iborat?",
+    options: [
+      "Faqat quruqlik.",
+      "Faqat suv hududlari.",
+      "Quruqlik, suv hududlari, havo fazosi, yer osti boyliklari.",
+      "Faqat havo fazosi."
+    ],
+    correct: 2
+  },
+  {
+    q: "Suverenitetning ikki yo'nalishi qaysilar?",
+    options: [
+      "Ichki va tashqi suverenitet.",
+      "Faqat ichki suverenitet.",
+      "Faqat tashqi suverenitet.",
+      "Faqat iqtisodiy suverenitet."
+    ],
+    correct: 0
+  },
+  {
+    q: "Majburlash apparatiga qaysilar kiradi?",
+    options: [
+      "Faqat soliq tizimi.",
+      "Faqat parlament.",
+      "Politsiya, prokuratura, sudlar, milliy gvardiya va harbiy kuchlar.",
+      "Faqat diniy hokimiyat."
+    ],
+    correct: 2
+  },
+  {
+    q: "Legitimlik nima?",
+    options: [
+      "Hokimiyatning qonuniyligi va xalq roziligiga asoslanishi.",
+      "Faqat harbiy kuchga asoslanishi.",
+      "Faqat diniy hokimiyatga asoslanishi.",
+      "Faqat iqtisodiy jarayonlarga asoslanishi."
+    ],
+    correct: 0
+  },
+  {
+    q: "Davlatning iqtisodiy asosi nimani anglatadi?",
+    options: [
+      "Faqat savdo-sotiq.",
+      "Davlat apparatini moliyaviy ta'minlash, mustaqil byudjet, soliq tizimi.",
+      "Faqat sug'orish tizimi.",
+      "Faqat harbiy xarajatlar."
+    ],
+    correct: 1
+  },
+  {
+    q: "Davlat mohiyatining sinfliy (tarixiy) qirrasi nimani anglatadi?",
+    options: [
+      "Faqat diniy hokimiyat.",
+      "Davlat sinfliy zo'ravonlikning mashinasi, hukmon sinf manfaatlarini himoya qilish vositasi.",
+      "Faqat sug'orish tizimi.",
+      "Faqat iqtisodiy jarayonlar."
+    ],
+    correct: 1
+  },
+  {
+    q: "Davlatning umumsosial (zamonaviy) qirrasi qaysi vazifalarni bajaradi?",
+    options: [
+      "Faqat iqtisodiy jarayonlarni boshqaradi.",
+      "Butun jamiyatning umumiy manfaatlariga xizmat qilish, inson huquqlarini himoya qilish.",
+      "Faqat harbiy kuchni boshqaradi.",
+      "Faqat diniy hokimiyatni ta'minlaydi."
+    ],
+    correct: 1
+  },
+  {
+    q: "Davlatning institutsional qirrasiga qaysilar kiradi?",
+    options: [
+      "Faqat diniy hokimiyat.",
+      "Qonun chiqaruvchi, ijro va sud hokimiyatlari, huquqni muhofaza qiluvchi organlar.",
+      "Faqat iqtisodiy jarayonlar.",
+      "Faqat harbiy kuch."
+    ],
+    correct: 1
+  },
+  {
+    q: "Marksistik nazariyaning davlat mohiyati haqidagi asosiy g'oyasi nima?",
+    options: [
+      "Davlat - diniy hokimiyat natijasi.",
+      "Davlat - iqtisodiy jihatdan hukmon sinfning siyosiy hokimiyat tashkiloti.",
+      "Davlat - faqat sug'orish tizimi.",
+      "Davlat - faqat harbiy kuch."
+    ],
+    correct: 1
+  },
+  {
+    q: "Elita nazariyasining vakillari kimlar?",
+    options: [
+      "Karl Marks va Engels.",
+      "V. Pareto va G. Moska.",
+      "Platon va Aristotel.",
+      "Tomas Gobbs va Russo."
+    ],
+    correct: 1
+  },
+  {
+    q: "Etatistik-totalitar kontseptsiyaga ko'ra, davlat va huquq nisbati qanday?",
+    options: [
+      "Huquq davlatdan ustun.",
+      "Davlat huquqdan ustun, davlat huquqni yaratadi.",
+      "Faqat diniy hokimiyatga asoslanadi.",
+      "Faqat iqtisodiy jarayonlarga asoslanadi."
+    ],
+    correct: 1
+  },
+  {
+    q: "Liberal kontseptsiyaga ko'ra, davlat va huquq nisbati qanday?",
+    options: [
+      "Davlat huquqdan ustun.",
+      "Huquq davlatdan ustun, tabiiy huquq nazariyasi asosida.",
+      "Faqat diniy hokimiyatga asoslanadi.",
+      "Faqat iqtisodiy jarayonlarga asoslanadi."
+    ],
+    correct: 1
+  },
+  {
+    q: "Davlat huquqqa qanday ta'sir ko'rsatadi?",
+    options: [
+      "Faqat iqtisodiy jarayonlarni boshqaradi.",
+      "Huquqni yaratish, rasmiylashirish, amalga oshirish, umumiy majburiylik xususiyatini berish.",
+      "Faqat diniy hokimiyatni ta'minlaydi.",
+      "Faqat harbiy kuchni boshqaradi."
+    ],
+    correct: 1
+  },
+  {
+    q: "Huquq davlatga qanday ta'sir ko'rsatadi?",
+    options: [
+      "Faqat iqtisodiy jarayonlarni boshqaradi.",
+      "Davlat faoliyatini tartibga solish, legitimlik bag'ishlash, organlarni shakllantirishni belgilash.",
+      "Faqat diniy hokimiyatni ta'minlaydi.",
+      "Faqat harbiy kuchni boshqaradi."
+    ],
+    correct: 1
+  },
+  {
+    q: "Zamonaviy davlatning eng maqbul iqtisodiy asosi nima?",
+    options: [
+      "Faqat xususiy mulkka asoslangan iqtisodiyot.",
+      "Faqat davlat mulkiga asoslangan iqtisodiyot.",
+      "Turli mulkchilik shakllariga asoslangan ijtimoiy yo'naltirilgan bozor iqtisodiyoti.",
+      "Faqat diniy hokimiyatga asoslangan iqtisodiyot."
+    ],
+    correct: 2
+  },
+  {
+    q: "Davlatning ijtimoiy asosi nimani anglatadi?",
+    options: [
+      "Faqat iqtisodiy jarayonlarni.",
+      "Davlatni qo'llab-quvvatlovchi jamiyat qatlamlari, xalqning ishonchi.",
+      "Faqat diniy hokimiyatni.",
+      "Faqat harbiy kuchni."
+    ],
+    correct: 1
+  },
+  {
+    q: "Davlatning ilmiy asosi nima uchun zarur?",
+    options: [
+      "Faqat diniy hokimiyatni ta'minlash uchun.",
+      "Davlat faoliyati ishonchli ilmiy poydevorga ega bo'lishi, ilmiy asoslangan qarorlar qabul qilish uchun.",
+      "Faqat iqtisodiy jarayonlarni boshqarish uchun.",
+      "Faqat harbiy kuchni ta'minlash uchun."
+    ],
+    correct: 1
+  }
+]
+
             }
+             // "topic3": {
+                // title: "3-Mavzu: DAVLAT VA HUQUQ TUSHUNCHASI BO'YICHA TEST SAVOLLARI",
+                // questions:
+                    
+
+            // }
         };
 
         // HOLATNI BOSHQARISH
