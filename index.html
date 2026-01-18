@@ -226,8 +226,26 @@
                     <span class="text-slate-700 font-medium leading-relaxed">${opt}</span>
                 `;
           btn.onclick = () => handleAnswer(i, btn);
+          btn.setAttribute("data-index", i); // Keyboard uchun index
           optionsContainer.appendChild(btn);
         });
+
+        // Keyboard listener
+        document.addEventListener("keydown", handleKeyboardAnswer);
+      }
+
+      function handleKeyboardAnswer(e) {
+        if (!canAnswer) return;
+
+        const key = parseInt(e.key);
+        if (key >= 1 && key <= 4) {
+          const index = key - 1;
+          const buttons = optionsContainer.querySelectorAll(".option-card");
+          if (buttons[index]) {
+            buttons[index].click();
+            document.removeEventListener("keydown", handleKeyboardAnswer);
+          }
+        }
       }
 
       function handleAnswer(i, btn) {
