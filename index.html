@@ -48,7 +48,7 @@
             onclick="startMixedTest()"
             class="w-full bg-gradient-to-r from-purple-600 to-blue-600 text-white px-6 py-4 rounded-2xl font-bold hover:from-purple-700 hover:to-blue-700 shadow-lg shadow-purple-200 transition-all text-lg"
           >
-            🎯 MIX IMTIHON REJIM Test (Jami 40ta savol )
+            🎯 MIX IMTIHON REJIM (Jami 40ta savol)
           </button>
           <p class="text-center text-sm text-slate-500 mt-3">
             Barcha mavzulardan random savollar
@@ -107,13 +107,16 @@
       <!-- Yakuniy Natija Sahifasi -->
       <div
         id="result-screen"
-        class="hidden p-12 text-center flex-col items-center justify-center"
+        class="hidden p-8 flex-col items-center justify-start overflow-y-auto"
       >
-        <div id="result-status-icon" class="mb-6 p-4 rounded-full">
-          <!-- Dinamik icon -->
-        </div>
+        <div id="result-status-icon" class="mb-6 p-4 rounded-full"></div>
         <h2 class="text-3xl font-bold text-slate-800 mb-2">Test Yakunlandi</h2>
-        <p id="final-score-text" class="text-lg text-slate-600 mb-10"></p>
+        <p id="final-score-text" class="text-lg text-slate-600 mb-8"></p>
+
+        <!-- Xato savollar ro'yxati -->
+        <div id="mistakes-container" class="w-full mb-8">
+          <!-- Xato savollar JS orqali yaratiladi -->
+        </div>
 
         <div class="flex flex-col sm:flex-row gap-4 w-full justify-center">
           <button
@@ -162,8 +165,11 @@
       let currentIdx = 0;
       let score = 0;
       let canAnswer = true;
-      let currentQuestions = []; // Joriy savol ro'yxati
-      let isMixedTest = false; // Mixrij test flag
+      let currentQuestions = [];
+      let isMixedTest = false;
+      let mistakesList = []; // Xato savollar
+      let selectedTopic = null; // Keyboard navigatsiya uchun
+      let selectedOption = -1; // Tanlangan javob variant
 
       const menuScreen = document.getElementById("menu-screen");
       const quizScreen = document.getElementById("quiz-screen");
@@ -175,15 +181,17 @@
       const progressBar = document.getElementById("progress-bar");
       const finalScoreText = document.getElementById("final-score-text");
       const statusIcon = document.getElementById("result-status-icon");
+      const mistakesContainer = document.getElementById("mistakes-container");
 
       // MENYUNI YUKLASH
       function initMenu() {
+        selectedTopic = null;
         topicsList.innerHTML = "";
-        Object.keys(quizDatabase).forEach((key) => {
+        Object.keys(quizDatabase).forEach((key, index) => {
           const topic = quizDatabase[key];
           const btn = document.createElement("button");
           btn.className =
-            "p-5 bg-white border border-slate-200 rounded-2xl text-left hover:border-blue-400 hover:bg-blue-50 transition-all flex justify-between items-center group";
+            "p-5 bg-white border-2 border-slate-200 rounded-2xl text-left hover:border-blue-400 hover:bg-blue-50 transition-all flex justify-between items-center group focus:border-blue-600 focus:ring-2 focus:ring-blue-300";
           btn.innerHTML = `
                     <div class="pr-4">
                         <h3 class="font-bold text-slate-800 group-hover:text-blue-700">${topic.title}</h3>
@@ -194,8 +202,35 @@
                     </div>
                 `;
           btn.onclick = () => startQuiz(key);
+          btn.setAttribute("data-topic-index", index);
           topicsList.appendChild(btn);
         });
+        document.addEventListener("keydown", handleMenuNavigation);
+      }
+
+      // MENYU NAVIGATSIYASI (STRELKA VA ENTER)
+      function handleMenuNavigation(e) {
+        if (!menuScreen.classList.contains("hidden")) {
+          const buttons = topicsList.querySelectorAll("button");
+          let currentIndex = selectedTopic !== null ? selectedTopic : -1;
+
+          if (e.key === "ArrowDown" || e.key === "ArrowRight") {
+            e.preventDefault();
+            currentIndex = (currentIndex + 1) % buttons.length;
+            selectedTopic = currentIndex;
+            buttons[currentIndex].focus();
+            buttons[currentIndex].classList.add("ring-2", "ring-blue-400");
+          } else if (e.key === "ArrowUp" || e.key === "ArrowLeft") {
+            e.preventDefault();
+            currentIndex = (currentIndex - 1 + buttons.length) % buttons.length;
+            selectedTopic = currentIndex;
+            buttons[currentIndex].focus();
+            buttons[currentIndex].classList.add("ring-2", "ring-blue-400");
+          } else if (e.key === "Enter" && currentIndex !== -1) {
+            e.preventDefault();
+            buttons[currentIndex].click();
+          }
+        }
       }
 
       // QUIZNI BOSHLASH
@@ -204,7 +239,7 @@
         currentTopicKey = key;
         currentIdx = 0;
         score = 0;
-        // Savolllarni randomize qilish va karalashtirish
+        mistakesList = [];
         currentQuestions = shuffleArray(
           randomizeQuestions(quizDatabase[currentTopicKey].questions),
         );
@@ -212,6 +247,7 @@
         resultScreen.classList.add("hidden");
         quizScreen.classList.remove("hidden");
         quizScreen.classList.add("flex");
+        document.removeEventListener("keydown", handleMenuNavigation);
         loadQuestion();
       }
 
@@ -221,19 +257,17 @@
         currentTopicKey = "mixedTest";
         currentIdx = 0;
         score = 0;
+        mistakesList = [];
 
-        // Barcha mavzulardan 40ta random savol olish
         const allQuestions = [];
         const topicKeys = Object.keys(quizDatabase);
 
-        // Har bir mavzudan 3ta random savol olish
         topicKeys.forEach((key) => {
           const questions = quizDatabase[key].questions;
           const selected = getRandomQuestions(questions, 3);
           allQuestions.push(...selected);
         });
 
-        // Qolgan savollar uchun random mavzular tanlash
         while (allQuestions.length < 40) {
           const randomKey =
             topicKeys[Math.floor(Math.random() * topicKeys.length)];
@@ -242,7 +276,6 @@
           allQuestions.push(...selected);
         }
 
-        // 40ta savolni olish va randomize qilish
         currentQuestions = shuffleArray(
           randomizeQuestions(allQuestions.slice(0, 40)),
         );
@@ -251,6 +284,7 @@
         resultScreen.classList.add("hidden");
         quizScreen.classList.remove("hidden");
         quizScreen.classList.add("flex");
+        document.removeEventListener("keydown", handleMenuNavigation);
         loadQuestion();
       }
 
@@ -265,46 +299,86 @@
         quizScreen.classList.remove("flex");
         resultScreen.classList.add("hidden");
         menuScreen.classList.remove("hidden");
+        document.removeEventListener("keydown", handleQuizNavigation);
         initMenu();
       }
 
       function loadQuestion() {
         canAnswer = true;
-        const qData = currentQuestions[currentIdx]; // Shuffled savoldan olish
+        selectedOption = -1; // Har safar tanlashni tozalash
+        const qData = currentQuestions[currentIdx];
 
         progressBar.style.width = `${(currentIdx / currentQuestions.length) * 100}%`;
         counter.innerText = `${currentIdx + 1} / ${currentQuestions.length}`;
-        questionText.innerText = qData.q;
+        questionText.innerText = qData.q.replace(/\[.*?\]/g, "");
 
         optionsContainer.innerHTML = "";
         qData.options.forEach((opt, i) => {
           const btn = document.createElement("button");
           btn.className =
-            "option-card p-4 rounded-xl border-2 border-slate-100 text-left hover:border-blue-200 flex items-start transition-all bg-white shadow-sm";
+            "option-card p-4 rounded-xl border-2 border-slate-100 text-left hover:border-blue-200 flex items-start transition-all bg-white shadow-sm focus:ring-2 focus:ring-blue-400";
           btn.innerHTML = `
                     <span class="w-7 h-7 rounded-lg bg-slate-100 text-slate-500 flex items-center justify-center text-xs font-bold mr-4 mt-0.5 shrink-0 transition-colors">${String.fromCharCode(65 + i)}</span>
                     <span class="text-slate-700 font-medium leading-relaxed">${opt}</span>
                 `;
           btn.onclick = () => handleAnswer(i, btn);
-          btn.setAttribute("data-index", i); // Keyboard uchun index
+          btn.setAttribute("data-index", i);
           optionsContainer.appendChild(btn);
         });
 
-        // Keyboard listener
-        document.addEventListener("keydown", handleKeyboardAnswer);
+        document.addEventListener("keydown", handleQuizNavigation);
       }
 
-      function handleKeyboardAnswer(e) {
-        if (!canAnswer) return;
+      function handleQuizNavigation(e) {
+        if (!canAnswer || menuScreen.classList.contains("visible")) return;
 
+        const buttons = optionsContainer.querySelectorAll(".option-card");
+        const totalOptions = buttons.length;
+
+        // 1-4 RAQAMLARI BILAN JAVOB TANLASH
         const key = parseInt(e.key);
-        if (key >= 1 && key <= 4) {
-          const index = key - 1;
-          const buttons = optionsContainer.querySelectorAll(".option-card");
-          if (buttons[index]) {
-            buttons[index].click();
-            document.removeEventListener("keydown", handleKeyboardAnswer);
-          }
+        if (key >= 1 && key <= 4 && key <= totalOptions) {
+          selectedOption = key - 1;
+          updateOptionHighlight(buttons);
+          return;
+        }
+
+        // STRELKA TUGMALARI BILAN NAVIGATSIYA
+        if (e.key === "ArrowDown" || e.key === "ArrowRight") {
+          e.preventDefault();
+          selectedOption = (selectedOption + 1) % totalOptions;
+          updateOptionHighlight(buttons);
+        } else if (e.key === "ArrowUp" || e.key === "ArrowLeft") {
+          e.preventDefault();
+          selectedOption = (selectedOption - 1 + totalOptions) % totalOptions;
+          updateOptionHighlight(buttons);
+        }
+        // ENTER BILAN JAVOB TANLASH
+        else if (e.key === "Enter" && selectedOption !== -1) {
+          e.preventDefault();
+          buttons[selectedOption].click();
+        }
+        // ESC BILAN MENYU
+        else if (e.key === "Escape") {
+          e.preventDefault();
+          showMenu();
+        }
+      }
+
+      function updateOptionHighlight(buttons) {
+        buttons.forEach((btn, index) => {
+          btn.classList.remove("ring-2", "ring-blue-400", "border-blue-400");
+        });
+        if (selectedOption >= 0 && selectedOption < buttons.length) {
+          buttons[selectedOption].classList.add(
+            "ring-2",
+            "ring-blue-400",
+            "border-blue-400",
+          );
+          buttons[selectedOption].scrollIntoView({
+            behavior: "smooth",
+            block: "nearest",
+          });
         }
       }
 
@@ -314,8 +388,9 @@
 
         const correct = currentQuestions[currentIdx].correct;
         const cards = optionsContainer.children;
+        const isCorrect = i === correct;
 
-        if (i === correct) {
+        if (isCorrect) {
           score++;
           btn.classList.add("border-green-500", "bg-green-50");
           btn
@@ -325,6 +400,14 @@
             .querySelector("span")
             .classList.replace("text-slate-500", "text-white");
         } else {
+          // XATO SAVOLNI SAQLASH
+          mistakesList.push({
+            questionNumber: currentIdx + 1,
+            question: currentQuestions[currentIdx].q.replace(/\[.*?\]/g, ""),
+            userAnswer: currentQuestions[currentIdx].options[i],
+            correctAnswer: currentQuestions[currentIdx].options[correct],
+          });
+
           btn.classList.add("border-red-400", "bg-red-50");
           btn
             .querySelector("span")
@@ -342,6 +425,9 @@
             .classList.replace("text-slate-500", "text-white");
         }
 
+        // XATO BO'LSA KO'P VAQT, TO'G'RI BO'LSA KAMROQ VAQT
+        const delayTime = isCorrect ? 1000 : 2500;
+
         setTimeout(() => {
           currentIdx++;
           if (currentIdx < currentQuestions.length) {
@@ -349,7 +435,7 @@
           } else {
             finishQuiz();
           }
-        }, 1200);
+        }, delayTime);
       }
 
       function finishQuiz() {
@@ -358,6 +444,7 @@
         quizScreen.classList.remove("flex");
         resultScreen.classList.remove("hidden");
         resultScreen.classList.add("flex");
+        document.removeEventListener("keydown", handleQuizNavigation);
 
         const total = currentQuestions.length;
         const percent = Math.round((score / total) * 100);
@@ -377,6 +464,48 @@
         }
 
         finalScoreText.innerHTML = `Siz jami <b>${total}</b> ta savoldan <b>${score}</b> tasini to'g'ri topdingiz.<br><span class="text-2xl font-extrabold mt-2 block ${percent >= 60 ? "text-green-600" : "text-red-600"}">Natija: ${percent}%</span>`;
+
+        // XATO SAVOLLARNI KO'RSATISH
+        displayMistakes();
+      }
+
+      function displayMistakes() {
+        mistakesContainer.innerHTML = "";
+
+        if (mistakesList.length === 0) {
+          mistakesContainer.innerHTML =
+            "<p class=\"text-green-600 font-bold text-center\">🎉 Barcha savollarni to'g'ri topdingiz!</p>";
+          return;
+        }
+
+        const title = document.createElement("h3");
+        title.className =
+          "text-xl font-bold text-red-600 mb-4 text-center w-full";
+        title.innerText = `❌ Xato qilgan savollar (${mistakesList.length})`;
+        mistakesContainer.appendChild(title);
+
+        mistakesList.forEach((mistake) => {
+          const card = document.createElement("div");
+          card.className =
+            "mb-4 p-4 bg-red-50 border-l-4 border-red-500 rounded-lg w-full";
+          card.innerHTML = `
+                    <div class="mb-2">
+                        <span class="bg-red-500 text-white px-3 py-1 rounded text-sm font-bold">${mistake.questionNumber}-savol</span>
+                    </div>
+                    <p class="text-slate-800 font-semibold mb-3">${mistake.question}</p>
+                    <div class="space-y-2">
+                        <div class="p-2 bg-red-100 border border-red-300 rounded">
+                            <span class="text-red-700 text-sm font-bold">❌ Sizning javob:</span>
+                            <p class="text-red-700">${mistake.userAnswer}</p>
+                        </div>
+                        <div class="p-2 bg-green-100 border border-green-300 rounded">
+                            <span class="text-green-700 text-sm font-bold">✅ To'g'ri javob:</span>
+                            <p class="text-green-700">${mistake.correctAnswer}</p>
+                        </div>
+                    </div>
+                `;
+          mistakesContainer.appendChild(card);
+        });
       }
 
       function restartTopic() {
@@ -387,7 +516,6 @@
         }
       }
 
-      // BOSHLASH
       window.onload = initMenu;
     </script>
   </body>
