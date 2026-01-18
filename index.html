@@ -27,7 +27,7 @@
       class="max-w-3xl w-full glass-panel rounded-3xl shadow-2xl overflow-hidden min-h-[550px] flex flex-col"
     >
       <!-- Bosh sahifa / Mavzular menyusi -->
-      <div id="menu-screen" class="p-8">
+      <div id="menu-screen" class="p-8 relative py-28">
         <div class="text-center mb-10">
           <h1 class="text-3xl font-extrabold text-slate-800 mb-2">
             Huquqshunoslik Quiz
@@ -39,6 +39,20 @@
 
         <div id="topics-list" class="grid grid-cols-1 gap-4">
           <!-- Mavzular ro'yxati JS orqali yaratiladi -->
+        </div>
+
+        <div
+          class="mt-6 pt-6 fixed bottom-0 left-0 bg-blue-100 right-0 border-t border-slate-200"
+        >
+          <button
+            onclick="startMixedTest()"
+            class="w-full bg-gradient-to-r from-purple-600 to-blue-600 text-white px-6 py-4 rounded-2xl font-bold hover:from-purple-700 hover:to-blue-700 shadow-lg shadow-purple-200 transition-all text-lg"
+          >
+            🎯 MIX IMTIHON REJIM Test (Jami 40ta savol )
+          </button>
+          <p class="text-center text-sm text-slate-500 mt-3">
+            Barcha mavzulardan random savollar
+          </p>
         </div>
       </div>
 
@@ -149,6 +163,7 @@
       let score = 0;
       let canAnswer = true;
       let currentQuestions = []; // Joriy savol ro'yxati
+      let isMixedTest = false; // Mixrij test flag
 
       const menuScreen = document.getElementById("menu-screen");
       const quizScreen = document.getElementById("quiz-screen");
@@ -185,6 +200,7 @@
 
       // QUIZNI BOSHLASH
       function startQuiz(key) {
+        isMixedTest = false;
         currentTopicKey = key;
         currentIdx = 0;
         score = 0;
@@ -199,6 +215,51 @@
         loadQuestion();
       }
 
+      // MIXRIJ TEST QUIZNI BOSHLASH
+      function startMixedTest() {
+        isMixedTest = true;
+        currentTopicKey = "mixedTest";
+        currentIdx = 0;
+        score = 0;
+
+        // Barcha mavzulardan 40ta random savol olish
+        const allQuestions = [];
+        const topicKeys = Object.keys(quizDatabase);
+
+        // Har bir mavzudan 3ta random savol olish
+        topicKeys.forEach((key) => {
+          const questions = quizDatabase[key].questions;
+          const selected = getRandomQuestions(questions, 3);
+          allQuestions.push(...selected);
+        });
+
+        // Qolgan savollar uchun random mavzular tanlash
+        while (allQuestions.length < 40) {
+          const randomKey =
+            topicKeys[Math.floor(Math.random() * topicKeys.length)];
+          const questions = quizDatabase[randomKey].questions;
+          const selected = getRandomQuestions(questions, 1);
+          allQuestions.push(...selected);
+        }
+
+        // 40ta savolni olish va randomize qilish
+        currentQuestions = shuffleArray(
+          randomizeQuestions(allQuestions.slice(0, 40)),
+        );
+
+        menuScreen.classList.add("hidden");
+        resultScreen.classList.add("hidden");
+        quizScreen.classList.remove("hidden");
+        quizScreen.classList.add("flex");
+        loadQuestion();
+      }
+
+      // Random savollar tanlash
+      function getRandomQuestions(questions, count) {
+        const shuffled = shuffleArray(questions);
+        return shuffled.slice(0, count);
+      }
+
       function showMenu() {
         quizScreen.classList.add("hidden");
         quizScreen.classList.remove("flex");
@@ -209,7 +270,6 @@
 
       function loadQuestion() {
         canAnswer = true;
-        const topic = quizDatabase[currentTopicKey];
         const qData = currentQuestions[currentIdx]; // Shuffled savoldan olish
 
         progressBar.style.width = `${(currentIdx / currentQuestions.length) * 100}%`;
@@ -320,7 +380,11 @@
       }
 
       function restartTopic() {
-        startQuiz(currentTopicKey);
+        if (isMixedTest) {
+          startMixedTest();
+        } else {
+          startQuiz(currentTopicKey);
+        }
       }
 
       // BOSHLASH
